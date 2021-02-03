@@ -29,12 +29,28 @@ namespace Assignment_3_Josiah_Sarles.Controllers
         }
         public IActionResult Movies()
         {
-            return View();
+            return View(TempStorage.Movies);
         }
 
+        [HttpGet]
         public IActionResult MoviesForm()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult MoviesForm(AddMovie appResponse)
+        {
+            if (ModelState.IsValid)
+            {
+                TempStorage.AddMovie(appResponse);
+                return View("Confirm", appResponse);
+            }
+            else
+            {
+                return View();
+            }
+            
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -1,6 +1,82 @@
 ﻿@{
-    ViewBag.Title = "My Movie Collection";
+    ViewBag.Title = "The Joel Hilton Film Collection";
+    ViewBag.Dash = " - ";
+    ViewBag.SubTitle = "My Movie Collection";
 }
-<h1>@ViewBag.Title</h1>
+
+@model IEnumerable<Assignment_3_Josiah_Sarles.Models.AddMovie>
+
+<h1>@ViewBag.SubTitle</h1>
 
 <p>Here is a list of all the movies I have added so far (while the app is running)</p>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Category
+                </th>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Year
+                </th>
+                <th>
+                    Director
+                </th>
+                <th>
+                    Rating
+                </th>
+                <th>
+                    Edited
+                </th>
+                <th>
+                    Lent To:
+                </th>
+                <th>
+                    Notes
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Assignment_3_Josiah_Sarles.Models.AddMovie x in Model)
+            {
+                if (x.title == "Independence Day")
+                {
+                    continue;
+                }
+                else
+                {
+            <tr>
+                <td>
+                    @x.category
+                </td>
+                <td>
+                    @x.title
+                </td>
+                <td>
+                    @x.year
+                </td>
+                <td>
+                    @x.director
+                </td>
+                <td>
+                    @x.rating
+                </td>
+                <td>
+                   @x.edited
+                </td>
+                <td>
+                    @x.lent
+                </td>
+                <td>
+                    @x.notes
+                </td>
+            </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
